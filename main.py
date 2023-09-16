@@ -33,16 +33,25 @@ def insertIntoBST(self: TreeNode, val: int) -> TreeNode:
 
 def levelOrder(root):
     # prints the nodes of the tree in breadth-first order, i.e. each level
+    print("Doing a level order traversal of the tree, starting now ----------")
     q = []      # an empty queue, represented by a list
     print("The root node's value is: ", root.val)
-    valuesList = []
+    valuesList = []         # initialize the list that holds the tree's nodes, traversed breadth first
 
     q.append(root)
     print("The queue's first element is now: ", q[0].val)
 
-    currentElement = q.pop(0)
+    while q:        # while q is not empty
+        current_node = q.pop(0)
 
-    valuesList.append(currentElement.val)
+        # add that node's value to the list
+        valuesList.append(current_node.val)
+
+        # check the node's children. If they are not null, add them to the queue
+        if current_node.left is not None:
+            q.append(current_node.left)
+        if current_node.right is not None:
+            q.append(current_node.right)
 
     print("The list of node values is now: ", valuesList)
     print("The queue is now: ", q)
@@ -56,3 +65,5 @@ if __name__ == '__main__':
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
     myTree = insertIntoBST(myTree, 25)
     print(myTree.right.val)
+
+    levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
