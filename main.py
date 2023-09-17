@@ -11,17 +11,20 @@ class TreeNode:
 
 
 # ---------------------------------------------------------------
-def insertIntoBST(node, val):
+def insertIntoBST(node_ptr, val):
+    # insert a new node with the value val into a binary search tree pointed to by node_ptr
+
     # return a new node if the tree is empty
-    if node is None:
+    if node_ptr is None:
         return TreeNode(val)
 
-    if val < node.val:
-        node.left = insertIntoBST(node.left, val)
+    if val < node_ptr.val:
+        node_ptr.left = insertIntoBST(node_ptr.left, val)
     else:
-        node.right = insertIntoBST(node.right, val)
+        node_ptr.right = insertIntoBST(node_ptr.right, val)
 
-    return node
+    return node_ptr
+# ---------------------------------------------------------------
 
 
 def levelOrder(root_ptr):
@@ -33,12 +36,12 @@ def levelOrder(root_ptr):
     q.append(root_ptr)
 
     while q:        # while q is not empty
-        current_node = q.pop(0)     # pop off the first node in the queue
+        current_node = q.pop(0)     # pop off the first node in the queue (not the last, like a stack)
 
         # add that node's value to the list
         valuesList.append(current_node.val)
 
-        # check the node's children. If they are not null, add them to the queue
+        # check the node's children. If they are not None, add them to the queue
         if current_node.left is not None:
             q.append(current_node.left)
         if current_node.right is not None:
