@@ -77,26 +77,28 @@ def reverseLevelOrder(root_ptr):
 
     # ---------------------------------------------------------------
 
+
 def levelOrderCount(root_ptr):
     # does a level order traversal and counts all nodes that have 2 children. Print the count.
     print("Doing a count of all nodes with 2 children, starting now ----------")
     q = []  # an empty queue, represented by a list
     # valuesList = []  # initialize the list that holds the tree's nodes, traversed breadth first
     count = 0
-    q.append(root_ptr)
+    if root_ptr is not None:
+        q.append(root_ptr)
 
-    while q:  # while q is not empty
-        current_node = q.pop(0)  # pop off the first node in the queue (not the last, like a stack)
+        while q:  # while q is not empty
+            current_node = q.pop(0)  # pop off the first node in the queue (not the last, like a stack)
 
-        # if that node has 2 children, increment the count
-        if current_node.left is not None and current_node.right is not None:
-            count += 1
+            # if that node has 2 children, increment the count
+            if current_node.left is not None and current_node.right is not None:
+                count += 1
 
-        # check the node's children. If they are not None, add them to the queue
-        if current_node.left is not None:
-            q.append(current_node.left)
-        if current_node.right is not None:
-            q.append(current_node.right)
+            # check the node's children. If they are not None, add them to the queue
+            if current_node.left is not None:
+                q.append(current_node.left)
+            if current_node.right is not None:
+                q.append(current_node.right)
 
     print("The number of nodes that have 2 children is: ", count)
     # -------------------------------------------------------------------
@@ -139,3 +141,6 @@ if __name__ == '__main__':
 
     levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
                                 # via level order traversal
+
+    emptyTree = None
+    levelOrderCount(emptyTree)
