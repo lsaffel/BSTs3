@@ -129,3 +129,6 @@ if __name__ == '__main__':
 
     levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
                                 # via level order traversal
+    myTree = insertIntoBST(myTree, 13)
+    levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+                                # via level order traversal
