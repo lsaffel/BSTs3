@@ -58,6 +58,10 @@ def reverseLevelOrder(root_ptr):
     qRL = []  # an empty queue, represented by a list
     values_list = []  # initialize the list that holds the tree's nodes, traversed breadth first
 
+    if root_ptr is None:
+        print("The list of node values is now: ", values_list)
+        return
+
     qRL.append(root_ptr)
 
     while qRL:  # while q is not empty
@@ -149,3 +153,4 @@ if __name__ == '__main__':
     emptyTree = None
     count = levelOrderCount(emptyTree)
     print("The number of nodes that have 2 children is: ", count)
+    reverseLevelOrder(emptyTree)
