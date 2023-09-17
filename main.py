@@ -59,7 +59,7 @@ if __name__ == '__main__':
     myTree = insertIntoBST(myTree, 12)
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
 
-    thirdTree = insertIntoBST(myTree, 6)
+    myTree = insertIntoBST(myTree, 6)
 
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
     #
