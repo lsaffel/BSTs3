@@ -49,7 +49,7 @@ def levelOrder(root_ptr):
 
     print("The list of node values is now: ", valuesList)
 
-    # ---------------------------------------------------------------
+# ---------------------------------------------------------------
 
 
 def reverseLevelOrder(root_ptr):
@@ -79,11 +79,13 @@ def reverseLevelOrder(root_ptr):
 
     print("The list of node values is now: ", values_list)
 
-    # ---------------------------------------------------------------
+# ---------------------------------------------------------------
 
 
 def levelOrderCountIt(root_ptr):
     # does an iterative (level order traversal and counts all nodes that have 2 children. Returns count.
+    # Time Complexity: O(n)
+    # Auxiliary Space : O(n) where, n is number of nodes in given binary tree
     print("Doing a count of all nodes with 2 children, starting now ----------")
     q = []  # an empty queue, represented by a list
     # valuesList = []  # initialize the list that holds the tree's nodes, traversed breadth first
@@ -106,12 +108,13 @@ def levelOrderCountIt(root_ptr):
         if current_node.right is not None:
             q.append(current_node.right)
     return count
-    # -------------------------------------------------------------------
+# -------------------------------------------------------------------
 
 
 def count2ChildrenRec(root_ptr):
     # recursively counts all nodes that have 2 children. Returns count.
-    if root_ptr is None or (root_ptr.left is None and root_ptr.right is None):
+
+    if root_ptr is None:
         return 0
 
     if root_ptr.left is not None and root_ptr.right is not None:
@@ -120,7 +123,7 @@ def count2ChildrenRec(root_ptr):
     else:
         return count2ChildrenRec(root_ptr.left) + count2ChildrenRec(root_ptr.right)
 
-    # -------------------------------------------------------------------
+# -------------------------------------------------------------------
 
 
 if __name__ == '__main__':
@@ -185,3 +188,21 @@ if __name__ == '__main__':
 
     count = count2ChildrenRec(emptyTree)   # counts num of nodes in tree with 2 children, recursively
     print("The number of nodes that have 2 children, recursively, is: ", count)
+
+    ganglyTree = TreeNode(18)
+    ganglyTree.left = TreeNode(10)
+    ganglyTree.left.left = TreeNode(5)
+    ganglyTree.left.left.left = TreeNode(1)
+    ganglyTree.left.left.right = TreeNode(3)
+    count = count2ChildrenRec(ganglyTree)  # counts num of nodes in tree with 2 children, recursively
+    print("The number of nodes in ganglyTree that have 2 children, recursively, is: ", count)
+
+    count = levelOrderCountIt(ganglyTree)  # counts num of nodes in tree with 2 children, iteratively
+    print("The number of nodes in ganglyTree that have 2 children, iteratively, is: ", count)
+
+    ganglyTree.right = TreeNode(30)
+    count = count2ChildrenRec(ganglyTree)  # counts num of nodes in tree with 2 children, recursively
+    print("The number of nodes in ganglyTree that have 2 children, recursively, is: ", count)
+
+    count = levelOrderCountIt(ganglyTree)  # counts num of nodes in tree with 2 children, iteratively
+    print("The number of nodes in ganglyTree that have 2 children, iteratively, is: ", count)
