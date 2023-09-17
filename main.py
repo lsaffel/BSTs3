@@ -131,6 +131,17 @@ def count2ChildrenRec(root_ptr):
     #     res += (count2ChildrenRec(root_ptr.left) +
     #             count2ChildrenRec(root_ptr.right))
     #     return res
+
+# -------------------------------------------------------------------
+
+# return the height of a binary tree, recursively
+
+
+def getHeight(root):
+    if root is None:
+        return 0
+    return 1 + max(getHeight(root.left), getHeight(root.right))
+
 # -------------------------------------------------------------------
 
 
@@ -214,3 +225,13 @@ if __name__ == '__main__':
 
     count = levelOrderCountIt(ganglyTree)  # counts num of nodes in tree with 2 children, iteratively
     print("The number of nodes in ganglyTree that have 2 children, iteratively, is: ", count)
+
+    height = getHeight(emptyTree)
+    print("Height of an empty tree is: ", height)
+
+    height = getHeight(myTree)
+    print("Height of myTree is: ", height)
+
+    height = getHeight(ganglyTree)
+    print("Height of ganglyTree is: ", height)
+

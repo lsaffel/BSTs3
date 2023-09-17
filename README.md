@@ -15,3 +15,5 @@ counts and prints how many nodes in the tree have 2 children via level order tra
 count2ChildrenRec(root_ptr)  
 returns the count of the number of nodes in tree with 2 children, recursively  
 
+getHeight(root)  
+return the height of a binary tree, recursively
