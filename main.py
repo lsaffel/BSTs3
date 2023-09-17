@@ -82,8 +82,8 @@ def reverseLevelOrder(root_ptr):
     # ---------------------------------------------------------------
 
 
-def levelOrderCount(root_ptr):
-    # does a level order traversal and counts all nodes that have 2 children. Print the count.
+def levelOrderCountIt(root_ptr):
+    # does an iterative (level order traversal and counts all nodes that have 2 children. Returns count.
     print("Doing a count of all nodes with 2 children, starting now ----------")
     q = []  # an empty queue, represented by a list
     # valuesList = []  # initialize the list that holds the tree's nodes, traversed breadth first
@@ -106,6 +106,20 @@ def levelOrderCount(root_ptr):
         if current_node.right is not None:
             q.append(current_node.right)
     return count
+    # -------------------------------------------------------------------
+
+
+def count2ChildrenRec(root_ptr):
+    # recursively counts all nodes that have 2 children. Returns count.
+    if root_ptr is None or (root_ptr.left is None and root_ptr.right is None):
+        return 0
+
+    if root_ptr.left is not None and root_ptr.right is not None:
+        return 1 + count2ChildrenRec(root_ptr.left) + count2ChildrenRec(root_ptr.right)
+
+    else:
+        return count2ChildrenRec(root_ptr.left) + count2ChildrenRec(root_ptr.right)
+
     # -------------------------------------------------------------------
 
 
@@ -134,10 +148,10 @@ if __name__ == '__main__':
 
     reverseLevelOrder(myTree)     # prints the nodes of the tree in breadth-first order, right to left
 
-    levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+    levelOrderCountIt(myTree)     # counts num of nodes in the tree have 2 children
                                 # via level order traversal
     myTree = insertIntoBST(myTree, 13)
-    count = levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+    count = levelOrderCountIt(myTree)     # counts num of nodes in the tree have 2 children
                                 # via level order traversal
     print("The number of nodes that have 2 children is: ", count)
 
@@ -146,22 +160,28 @@ if __name__ == '__main__':
 
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
 
-    count = levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+    count = levelOrderCountIt(myTree)     # counts num of nodes in the tree have 2 children
                                 # via level order traversal
     print("The number of nodes that have 2 children is: ", count)
 
     myTree = insertIntoBST(myTree, 35)
-    count = levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+    count = levelOrderCountIt(myTree)     # counts num of nodes in the tree have 2 children
                                 # via level order traversal
     print("The number of nodes that have 2 children is: ", count)
 
     myTree = insertIntoBST(myTree, 600)
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
-    count = levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+    count = levelOrderCountIt(myTree)     # counts num of nodes in the tree have 2 children
                                 # via level order traversal
     print("The number of nodes that have 2 children is: ", count)
 
+    count = count2ChildrenRec(myTree)   # counts num of nodes in tree with 2 children, recursively
+    print("The number of nodes that have 2 children, recursively, is: ", count)
+
     emptyTree = None
-    count = levelOrderCount(emptyTree)
+    count = levelOrderCountIt(emptyTree)
     print("The number of nodes that have 2 children is: ", count)
     reverseLevelOrder(emptyTree)
+
+    count = count2ChildrenRec(emptyTree)   # counts num of nodes in tree with 2 children, recursively
+    print("The number of nodes that have 2 children, recursively, is: ", count)

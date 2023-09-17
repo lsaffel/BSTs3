@@ -9,5 +9,9 @@ prints the nodes of the tree in breadth-first order, i.e. each level, left to ri
 reverseLevelOrder(root_ptr)  
 prints the nodes of the tree in breadth-first order, i.e. each level, from right to left  
 
-levelOrderCount(myTree)  
+levelOrderCountIt(root_ptr)  
 counts and prints how many nodes in the tree have 2 children via level order traversal  
+
+count2ChildrenRec(root_ptr)  
+returns the count of the number of nodes in tree with 2 children, recursively  
+
