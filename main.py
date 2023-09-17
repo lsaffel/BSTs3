@@ -113,16 +113,24 @@ def levelOrderCountIt(root_ptr):
 
 def count2ChildrenRec(root_ptr):
     # recursively counts all nodes that have 2 children. Returns count.
-
+    # Time Complexity: O(n)
+    # Auxiliary Space: O(n)
     if root_ptr is None:
         return 0
 
     if root_ptr.left is not None and root_ptr.right is not None:
         return 1 + count2ChildrenRec(root_ptr.left) + count2ChildrenRec(root_ptr.right)
-
     else:
         return count2ChildrenRec(root_ptr.left) + count2ChildrenRec(root_ptr.right)
 
+    # another way to do this, replacing code after the first statement:
+    #     res = 0
+    #     if (root_ptr.left and root_ptr.right):
+    #         res += 1
+    #
+    #     res += (count2ChildrenRec(root_ptr.left) +
+    #             count2ChildrenRec(root_ptr.right))
+    #     return res
 # -------------------------------------------------------------------
 
 
