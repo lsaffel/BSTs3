@@ -150,6 +150,17 @@ if __name__ == '__main__':
                                 # via level order traversal
     print("The number of nodes that have 2 children is: ", count)
 
+    myTree = insertIntoBST(myTree, 35)
+    count = levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+                                # via level order traversal
+    print("The number of nodes that have 2 children is: ", count)
+
+    myTree = insertIntoBST(myTree, 600)
+    levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
+    count = levelOrderCount(myTree)     # counts and prints how many nodes in the tree have 2 children
+                                # via level order traversal
+    print("The number of nodes that have 2 children is: ", count)
+
     emptyTree = None
     count = levelOrderCount(emptyTree)
     print("The number of nodes that have 2 children is: ", count)
