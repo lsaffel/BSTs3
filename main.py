@@ -10,18 +10,6 @@ class TreeNode:
         self.right = right
 
 
-# def insertIntoBST(root_ptr: TreeNode, val: int) -> TreeNode:
-#     new_node = TreeNode(val)
-#     if root_ptr is None:
-#         root = new_node
-#         return root
-#
-#     if val < root_ptr.val:
-#         root_ptr = insertIntoBST(root_ptr.left, val)
-#     else:       # val >= root.val
-#         root_ptr = insertIntoBST(root_ptr.right, val)
-#
-#     return root_ptr
 # ---------------------------------------------------------------
 def insertIntoBST(node, val):
     # return a new node if the tree is empty
@@ -35,17 +23,17 @@ def insertIntoBST(node, val):
 
     return node
 
+
 def levelOrder(root_ptr):
     # prints the nodes of the tree in breadth-first order, i.e. each level
     print("Doing a level order traversal of the tree, starting now ----------")
     q = []      # an empty queue, represented by a list
-    # print("The root node's value is: ", root.val)
     valuesList = []         # initialize the list that holds the tree's nodes, traversed breadth first
 
     q.append(root_ptr)
 
     while q:        # while q is not empty
-        current_node = q.pop(0)
+        current_node = q.pop(0)     # pop off the first node in the queue
 
         # add that node's value to the list
         valuesList.append(current_node.val)
@@ -63,19 +51,13 @@ def levelOrder(root_ptr):
 
 if __name__ == '__main__':
     myTree = TreeNode(17)
-    # print(myTree.val)
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
     myTree = insertIntoBST(myTree, 25)
-    print(myTree.right.val)
 
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
 
     myTree = insertIntoBST(myTree, 12)
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
-
-    print("The root node is: ", myTree.val)
-    print("The left node is: ", myTree.left.val)
-    print("The right node is: ", myTree.right.val)
 
     thirdTree = insertIntoBST(myTree, 6)
 
