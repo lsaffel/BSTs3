@@ -5,3 +5,6 @@ insert a new node with the value val into a binary search tree pointed to by nod
 
 levelOrder(root_ptr)  
 prints the nodes of the tree in breadth-first order, i.e. each level, left to right  
+  
+reverseLevelOrder(root_ptr)  
+prints the nodes of the tree in breadth-first order, i.e. each level, from right to left  

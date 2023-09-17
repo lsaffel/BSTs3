@@ -49,6 +49,32 @@ def levelOrder(root_ptr):
 
     print("The list of node values is now: ", valuesList)
 
+    # ---------------------------------------------------------------
+
+
+def reverseLevelOrder(root_ptr):
+    # prints the nodes of the tree in breadth-first order, i.e. each level, from right to left
+    print("Doing a right to left level order traversal of the tree, starting now ----------")
+    qRL = []  # an empty queue, represented by a list
+    values_list = []  # initialize the list that holds the tree's nodes, traversed breadth first
+
+    qRL.append(root_ptr)
+
+    while qRL:  # while q is not empty
+        current_node = qRL.pop(0)  # pop off the first node in the queue (not the last, like a stack)
+
+        # add that node's value to the list
+        values_list.append(current_node.val)
+
+        # check the node's children. If they are not None, add them to the queue
+        # add them this time in right to left order
+        if current_node.right is not None:
+            qRL.append(current_node.right)
+        if current_node.left is not None:
+            qRL.append(current_node.left)
+
+    print("The list of node values is now: ", values_list)
+
     # -------------------------------------------------------------------
 
 
@@ -74,3 +100,5 @@ if __name__ == '__main__':
 
     myTree = insertIntoBST(myTree, 23)
     levelOrder(myTree)     # prints the nodes of the tree in breadth-first order, i.e. each level
+
+    reverseLevelOrder(myTree)     # prints the nodes of the tree in breadth-first order, right to left
