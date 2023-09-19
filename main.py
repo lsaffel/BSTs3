@@ -145,7 +145,7 @@ def getHeight(root):
 
 
 def findMinMaxBST(root):
-    # find minimum and maximum values in a binary search tree and print them
+    # find minimum and maximum values in a binary search tree iteratively and print them
 
     # start at the top to find the minimum value
     node_ptr = root
@@ -166,6 +166,56 @@ def findMinMaxBST(root):
         node_ptr = node_ptr.right
     print("The maximum value in the tree is: ", node_ptr.val)
 
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def findMin(root):
+    # find the minimum value iteratively in a binary search tree and return that value
+    # returns -1 if the tree is empty. Assumes all values in the tree are positive.
+    if root is None:
+        print("The tree is empty. Return -1, assuming all values in the tree are positive")
+        return -1
+    while root.left is not None:
+        root = root.left
+    return root.val
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def findMax(root):
+    # find the maximum value iteratively in a binary search tree and return that value
+    # returns -1 if the tree is empty. Assumes all values in the tree are positive.
+    if root is None:
+        print("The tree is empty. Return -1, assuming all values in the tree are positive")
+        return -1
+    while root.right is not None:
+        root = root.right
+    return root.val
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def findMinR(root):
+    # find and return the minimum value in the tree pointed to by root, recursively
+    # if the tree is empty, return -1. This assumes that the tree has only positive values
+    if root is None:
+        print("The tree is empty. Return -1")
+        return -1
+    if root.left is None:
+        return root.val
+    else:
+        return findMinR(root.left)
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def findMaxR(root):
+    # find and return the maximum value in the tree pointed to by root, recursively
+    # if the tree is empty, return -1. This assumes that the tree has only positive values
+    if root is None:
+        print("The tree is empty. Return -1")
+        return -1
+    if root.right is None:
+        return root.val
+    else:
+        return findMaxR(root.right)
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -263,3 +313,21 @@ if __name__ == '__main__':
     findMinMaxBST(emptyTree)
     findMinMaxBST(myTree)
     findMinMaxBST(ganglyTree)
+
+    minn = findMin(myTree)
+    print("The minimum value (iteratively) in myTree is: ", minn)
+
+    maximum = findMax(myTree)
+    print("The maximum value (iteratively) in myTree is: ", maximum)
+
+    minn = findMinR(myTree)
+    print("The minimum value (recursively) in myTree is: ", minn)
+
+    maximum = findMaxR(myTree)
+    print("The maximum value (recursively) in myTree is: ", maximum)
+
+    minn = findMinR(ganglyTree)
+    print("The minimum value (recursively) in ganglyTree is: ", minn)
+
+    maximum = findMaxR(ganglyTree)
+    print("The maximum value (recursively) in ganglyTree is: ", maximum)

@@ -19,4 +19,22 @@ getHeight(root)
 return the height of a binary tree, recursively  
 
 findMinMaxBST(root)  
-find minimum and maximum values in a binary search tree and print them  
+find minimum and maximum values in a binary search tree iteratively and print them  
+
+findMin(root)  
+find the minimum value iteratively in a binary search tree and return that value  
+returns -1 if the tree is empty. Assumes all values in the tree are positive.  
+
+findMax(root)  
+find the maximum value iteratively in a binary search tree and return that value  
+returns -1 if the tree is empty. Assumes all values in the tree are positive.  
+
+findMinR(root)  
+find and return the minimum value in the tree pointed to by root, recursively  
+if the tree is empty, return -1. This assumes that the tree has only positive values  
+
+findMaxR(root)  
+find and return the maximum value in the tree pointed to by root, recursively  
+if the tree is empty, return -1. This assumes that the tree has only positive values  
+
+
