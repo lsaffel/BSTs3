@@ -16,4 +16,7 @@ count2ChildrenRec(root_ptr)
 returns the count of the number of nodes in tree with 2 children, recursively  
 
 getHeight(root)  
-return the height of a binary tree, recursively
+return the height of a binary tree, recursively  
+
+findMinMaxBST(root)  
+find minimum and maximum values in a binary search tree and print them  

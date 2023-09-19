@@ -141,8 +141,33 @@ def getHeight(root):
     if root is None:
         return 0
     return 1 + max(getHeight(root.left), getHeight(root.right))
+# --------------------------------------------------------------------------------------------------------------------------------------
 
-# -------------------------------------------------------------------
+
+def findMinMaxBST(root):
+    # find minimum and maximum values in a binary search tree and print them
+
+    # start at the top to find the minimum value
+    node_ptr = root
+    if node_ptr is None:
+        print("The tree is empty. There are no min or max values.")
+        return
+
+    # otherwise, continue. The tree is not empty, so find the minimum value first
+    # The minimum value is the lowest, left-most node's value
+    while node_ptr.left is not None:
+        node_ptr = node_ptr.left
+    print("The minimum value in the tree is: ", node_ptr.val)
+
+    # start over at the top, to find the maximum value
+    # The maximum value is the lowest, right-most node's value
+    node_ptr = root
+    while node_ptr.right is not None:
+        node_ptr = node_ptr.right
+    print("The maximum value in the tree is: ", node_ptr.val)
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------------------------
 
 
 if __name__ == '__main__':
@@ -235,3 +260,6 @@ if __name__ == '__main__':
     height = getHeight(ganglyTree)
     print("Height of ganglyTree is: ", height)
 
+    findMinMaxBST(emptyTree)
+    findMinMaxBST(myTree)
+    findMinMaxBST(ganglyTree)
