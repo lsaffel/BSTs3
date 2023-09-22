@@ -229,7 +229,7 @@ def invertTree(root: TreeNode) -> TreeNode:
     # swap the children
     root.left, root.right = root.right, root.left
 
-    # swap the children - an alternate way of swapping them, which also works
+    # swap the children - an alternate way of swapping them, which also works:
     # tmp = root.left
     # root.left = root.right
     # root.right = tmp
@@ -357,3 +357,8 @@ if __name__ == '__main__':
     levelOrder(myTree)
     reversedMyTree = invertTree(myTree)
     levelOrder(reversedMyTree)
+
+    print("---------------------------------------------")
+    levelOrder(ganglyTree)
+    reversedGanglyTree = invertTree(ganglyTree)
+    levelOrder(reversedGanglyTree)
