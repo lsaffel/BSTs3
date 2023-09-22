@@ -216,6 +216,26 @@ def findMaxR(root):
         return root.val
     else:
         return findMaxR(root.right)
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def invertTree(self: TreeNode) -> TreeNode:
+    # def invertTree(self):         # this alternate header to the method also works
+    # inverts a binary tree. That is, reverse the order at each level of the tree
+    root = self
+    if not root:
+        return None
+
+    # swap the children
+    tmp = root.left
+    root.left = root.right
+    root.right = tmp
+
+    invertTree(root.left)
+    invertTree(root.right)
+    return root
+
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -331,3 +351,7 @@ if __name__ == '__main__':
 
     maximum = findMaxR(ganglyTree)
     print("The maximum value (recursively) in ganglyTree is: ", maximum)
+
+    levelOrder(myTree)
+    reversedMyTree = invertTree(myTree)
+    levelOrder(reversedMyTree)
