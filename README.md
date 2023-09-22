@@ -37,7 +37,7 @@ findMaxR(root)
 find and return the maximum value in the tree pointed to by root, recursively  
 if the tree is empty, return -1. This assumes that the tree has only positive values  
 
-invertTree(self: TreeNode) -> TreeNode:  
+invertTree(root: TreeNode) -> TreeNode  
 inverts a binary tree. That is, reverse the order at each level of the tree  
 
 

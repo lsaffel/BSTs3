@@ -220,17 +220,19 @@ def findMaxR(root):
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 
-def invertTree(self: TreeNode) -> TreeNode:
-    # def invertTree(self):         # this alternate header to the method also works
-    # inverts a binary tree. That is, reverse the order at each level of the tree
-    root = self
+def invertTree(root: TreeNode) -> TreeNode:
+    # def invertTree(root):         # this alternate header to the method also works
+    # inverts a binary tree. That is, reverse the order of node values at each level of the tree
     if not root:
         return None
 
     # swap the children
-    tmp = root.left
-    root.left = root.right
-    root.right = tmp
+    root.left, root.right = root.right, root.left
+
+    # swap the children - an alternate way of swapping them, which also works
+    # tmp = root.left
+    # root.left = root.right
+    # root.right = tmp
 
     invertTree(root.left)
     invertTree(root.right)
