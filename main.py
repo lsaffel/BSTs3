@@ -30,6 +30,10 @@ def insertIntoBST(node_ptr, val):
 def levelOrder(root_ptr):
     # prints the nodes of the tree in breadth-first order, i.e. each level
     print("Doing a level order traversal of the tree, starting now ----------")
+    if root_ptr is None:
+        print("The tree is empty")
+        return
+
     q = []      # an empty queue, represented by a list
     valuesList = []         # initialize the list that holds the tree's nodes, traversed breadth first
 
@@ -223,10 +227,10 @@ def findMaxR(root):
 def invertTree(root: TreeNode) -> TreeNode:
     # def invertTree(root):         # this alternate header to the method also works
     # inverts a binary tree. That is, reverse the order of node values at each level of the tree
-    if not root:
-        return None
+    if not root:        # if the root is empty.
+        return None     # needed if the tree is empty
 
-    # swap the children
+    # swap the children, even if a child is None
     root.left, root.right = root.right, root.left
 
     # swap the children - an alternate way of swapping them, which also works:
@@ -234,6 +238,7 @@ def invertTree(root: TreeNode) -> TreeNode:
     # root.left = root.right
     # root.right = tmp
 
+    # recursive calls on the children of the root to swap children on each subtree of root
     invertTree(root.left)
     invertTree(root.right)
     return root
@@ -362,3 +367,8 @@ if __name__ == '__main__':
     levelOrder(ganglyTree)
     reversedGanglyTree = invertTree(ganglyTree)
     levelOrder(reversedGanglyTree)
+
+    print("----------------- empty tree ----------------------------")
+    levelOrder(emptyTree)
+    reversedEmptyTree = invertTree(emptyTree)
+    levelOrder(reversedEmptyTree)
