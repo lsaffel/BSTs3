@@ -40,4 +40,10 @@ if the tree is empty, return -1. This assumes that the tree has only positive va
 invertTree(root: TreeNode) -> TreeNode  
 inverts a binary tree. That is, reverse the order at each level of the tree  
 
+isPresent(root, value)  
+returns boolean True if the value is present in the tree based at root  
+and False if it is not  
+recursive  
+
+
 

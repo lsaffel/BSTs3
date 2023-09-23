@@ -227,6 +227,7 @@ def findMaxR(root):
 def invertTree(root: TreeNode) -> TreeNode:
     # def invertTree(root):         # this alternate header to the method also works
     # inverts a binary tree. That is, reverse the order of node values at each level of the tree
+    # Note - this inverts the tree in place. It does not return a copy of the inverted tree.
     if not root:        # if the root is empty.
         return None     # needed if the tree is empty
 
@@ -242,6 +243,22 @@ def invertTree(root: TreeNode) -> TreeNode:
     invertTree(root.left)
     invertTree(root.right)
     return root
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def isPresent(root, value):
+    # returns boolean True if the value is present in the tree based at root and False if it is not
+    # recursive
+
+    if root is None:    # empty tree
+        return False
+    if root.val == value:
+        return True
+    if value < root.val:
+        return isPresent(root.left, value)
+    else:
+        return isPresent(root.right, value)
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
@@ -372,3 +389,13 @@ if __name__ == '__main__':
     levelOrder(emptyTree)
     reversedEmptyTree = invertTree(emptyTree)
     levelOrder(reversedEmptyTree)
+
+    # put myTree back to the right order that it was in to begin with, after being inverted above
+    reversedEmptyTree = invertTree(myTree)
+
+    levelOrder(myTree)
+    isThere = isPresent(myTree, 15)
+    print("The value 15 is present within myTree: ", isThere)
+
+    isThere = isPresent(myTree, 24)
+    print("The value 24 is present within myTree: ", isThere)
