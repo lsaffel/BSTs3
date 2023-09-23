@@ -259,7 +259,19 @@ def isPresent(root, value):
         return isPresent(root.left, value)
     else:
         return isPresent(root.right, value)
+# --------------------------------------------------------------------------------------------------------------------------------------
 
+# def removeLeaf(root, value):
+#     # removes the node in a BST which is a leaf node
+#     findNode()
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def returnTwoValues(a, b):
+    # a method to test returning two values
+    summ = a + b
+    mult = a * b
+    return summ, mult
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -399,3 +411,6 @@ if __name__ == '__main__':
 
     isThere = isPresent(myTree, 24)
     print("The value 24 is present within myTree: ", isThere)
+
+    summm, multt = returnTwoValues(3, 5)
+    print("The sum and multiplied results of 3 and 5 are: ", summm, multt)
