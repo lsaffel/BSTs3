@@ -261,17 +261,71 @@ def isPresent(root, value):
         return isPresent(root.right, value)
 # --------------------------------------------------------------------------------------------------------------------------------------
 
-# def removeLeaf(root, value):
-#     # removes the node in a BST which is a leaf node
-#     findNode()
-# --------------------------------------------------------------------------------------------------------------------------------------
-
 
 def returnTwoValues(a, b):
     # a method to test returning two values
     summ = a + b
     mult = a * b
     return summ, mult
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+# def findValue(root: TreeNode, value):
+    # returns a pointer to the node above the desired leaf node
+    # returns None if the value was not found in the tree or if the tree is empty
+    # returns root if the tree has only one node
+
+    # returns boolean valFound as True or False
+    # returns a pointer:
+    # if it was found, returns pointer to the node above it
+    # if it was not found, returns None
+
+    # recursive attempt - does not work
+    # if root is None:
+    #     return False, None
+    # if root.val == value:
+    #     # if (root.left is None) and (root.right is None):    # check this in calling function instead?
+    #     return True, root   # ??
+    #
+    # nodeAbovePtr = root     # initialize, to point at the node above the node we're looking for
+    # # otherwise, the tree has more than one node and it's not the root node, so keep searching
+    # if value < nodeAbovePtr.val:
+    #     nodeFound, nodePtr = findValue(nodeAbovePtr.left, value)
+    #     return nodeFound, nodePtr
+    # else:
+    #     nodeFound, nodePtr = findValue(nodeAbovePtr.right, value)
+    #     return nodeFound, nodePtr
+
+def findValue(root: TreeNode, value):
+    # iterative solution
+    # returns True or False if found or not found in tree, and a pointer
+    # to the node above the node where it was found, if it was found
+    if root is None:        # the tree is empty
+        return False, None
+    currentNode = root      # initialize
+    abovePtr = None     # initialize the pointer to the node above the found node
+
+    # continue. The tree is not empty
+    while currentNode is not None:
+        if value == currentNode.val:
+            return True, abovePtr
+        abovePtr = currentNode
+        if value < currentNode.val:
+            currentNode = currentNode.left
+        else:
+            currentNode = currentNode.right
+
+    # the node was not found, so it falls out of the loop
+    return False, None
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+
+def removeLeaf(root, value):
+    # removes the node in a BST which is a leaf node. Returns the root with the leaf node removed
+    findValue(value)      # return a pointer to the node above the desired leaf node
+
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -412,5 +466,48 @@ if __name__ == '__main__':
     isThere = isPresent(myTree, 24)
     print("The value 24 is present within myTree: ", isThere)
 
+    # tester method to see how to return two values in Python
     summm, multt = returnTwoValues(3, 5)
     print("The sum and multiplied results of 3 and 5 are: ", summm, multt)
+
+    nodeWasFound, nodePtr = findValue(myTree, 23)
+    print("The value 23 was found in the tree? ", nodeWasFound)
+    if nodePtr is None:
+        print("There is no node above")
+    else:
+        print("The node above the found value contains the value: ", nodePtr.val)
+
+    nodeWasFound, nodePtr = findValue(emptyTree, 23)
+    print("The value 23 was found in the tree? ", nodeWasFound)
+    if nodePtr is None:
+        print("There is no node above")
+    else:
+        print("The node above the found value contains the value: ", nodePtr.val)
+
+    nodeWasFound, nodePtr = findValue(myTree, 700)
+    print("The value 700 was found in the tree? ", nodeWasFound)
+    if nodePtr is None:
+        print("There is no node above")
+    else:
+        print("The node above the found value contains the value: ", nodePtr.val)
+
+    nodeWasFound, nodePtr = findValue(myTree, 14)
+    print("The value 14 was found in the tree? ", nodeWasFound)
+    if nodePtr is None:
+        print("There is no node above")
+    else:
+        print("The node above the found value contains the value: ", nodePtr.val)
+
+    nodeWasFound, nodePtr = findValue(myTree, 17)
+    print("The value 17 was found in the tree? ", nodeWasFound)
+    if nodePtr is None:
+        print("There is no node above")
+    else:
+        print("The node above the found value contains the value: ", nodePtr.val)
+
+    nodeWasFound, nodePtr = findValue(myTree, 35)
+    print("The value 35 was found in the tree? ", nodeWasFound)
+    if nodePtr is None:
+        print("There is no node above")
+    else:
+        print("The node above the found value contains the value: ", nodePtr.val)

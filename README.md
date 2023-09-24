@@ -48,3 +48,8 @@ recursive
 returnTwoValues(a, b)  
 a method to test returning two values  
 
+findValue(root: TreeNode, value)  
+iterative solution  
+returns True or False if found or not found in tree, and a  
+pointer to the node above the node where it was found, if it was found  
+
