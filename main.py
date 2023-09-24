@@ -270,32 +270,6 @@ def returnTwoValues(a, b):
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 
-# def findValue(root: TreeNode, value):
-    # returns a pointer to the node above the desired leaf node
-    # returns None if the value was not found in the tree or if the tree is empty
-    # returns root if the tree has only one node
-
-    # returns boolean valFound as True or False
-    # returns a pointer:
-    # if it was found, returns pointer to the node above it
-    # if it was not found, returns None
-
-    # recursive attempt - does not work
-    # if root is None:
-    #     return False, None
-    # if root.val == value:
-    #     # if (root.left is None) and (root.right is None):    # check this in calling function instead?
-    #     return True, root   # ??
-    #
-    # nodeAbovePtr = root     # initialize, to point at the node above the node we're looking for
-    # # otherwise, the tree has more than one node and it's not the root node, so keep searching
-    # if value < nodeAbovePtr.val:
-    #     nodeFound, nodePtr = findValue(nodeAbovePtr.left, value)
-    #     return nodeFound, nodePtr
-    # else:
-    #     nodeFound, nodePtr = findValue(nodeAbovePtr.right, value)
-    #     return nodeFound, nodePtr
-
 def findValue(root: TreeNode, value):
     # iterative solution
     # returns True or False if found or not found in tree, and a pointer
