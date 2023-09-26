@@ -299,7 +299,16 @@ def findValue(root: TreeNode, value):
 def removeLeaf(root, value):
     # removes the node in a BST which is a leaf node. Returns the root with the leaf node removed
     findValue(value)      # return a pointer to the node above the desired leaf node
+# --------------------------------------------------------------------------------------------------------------------------------------
 
+
+def maxDepth(root) -> int:
+    # returns the maximum depth of a binary tree. It does not have to be a binary search tree.
+    # Maximum depth is defined as the number of nodes from the root to the lowest leaf.
+    # depth of a tree is max of (1 + depth of left side) and (1 + right side depth)
+    if root is None:
+        return 0
+    return 1 + max(maxDepth(root.left), maxDepth(root.right))
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -485,3 +494,7 @@ if __name__ == '__main__':
         print("There is no node above")
     else:
         print("The node above the found value contains the value: ", nodePtr.val)
+
+    print("The maximum depth of myTree is: ", maxDepth(myTree))
+    print("The maximum depth of emptyTree is: ", maxDepth(emptyTree))
+    print("The maximum depth of ganglyTree is: ", maxDepth(ganglyTree))

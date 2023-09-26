@@ -53,3 +53,7 @@ iterative solution
 returns True or False if found or not found in tree, and a  
 pointer to the node above the node where it was found, if it was found  
 
+maxDepth(root) -> int:  
+returns the maximum depth of a binary tree. It does not have to be a binary search tree.  
+Maximum depth is defined as the number of nodes from the root to the lowest leaf.  
+depth of a tree is max of (1 + depth of left side) and (1 + right side depth)  
