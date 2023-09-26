@@ -1,4 +1,4 @@
-**Binary Search Tree methods**  
+**Binary Tree and Binary Search Tree methods**  
 
 **insertIntoBST**(node_ptr, val)  
 insert a new node with the value val into a binary search tree pointed to by node_ptr  
